@@ -14,10 +14,12 @@
     max-width: 1200px;
     min-height: 160px;
 
+    /* 외부 폰트 Goldman 사용 */
     font-family: 'Goldman', cursive;
 }
 
 #title {
+    /* main_header 기준으로 위에서 30px, 왼쪽에서 20px */
     position: absolute;
     top: 30px;
     left: 20px;
@@ -32,6 +34,7 @@
 }
 
 #user_info {
+    /* main_header 기준 오른쪽에서 20px, 위에서 20px */
     position: absolute;
     right: 20px;
     top: 20px;
@@ -49,16 +52,19 @@
 }
 
 #main_menu {
+    /* main_header 기준 아래에서 20px, 왼쪽에서 20px */
     position: absolute;
     left: 20px;
     bottom: 20px;
 }
 
 #main_menu > ul > li {
+    /* li가 위에서 아래로 쌓이는 게 아니라 왼쪽에서 오른쪽으로 쌓인다. */
     float: left;
 }
 
 #main_menu > ul > li > a {
+    /* 메뉴 하나하나가 크기를 갖고 있다. */
     display: block;
     padding: 7px 10px;
     border: 1px solid skyblue;
