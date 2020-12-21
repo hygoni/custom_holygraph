@@ -18,6 +18,10 @@
     font-family: 'Goldman', cursive;
 }
 
+a {
+  text-decoration: none;
+}
+
 #title {
     /* main_header 기준으로 위에서 30px, 왼쪽에서 20px */
     position: absolute;
