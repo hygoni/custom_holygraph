@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "hyeyoo",
+    "password": "hyeyoo",
+    "database": "hyeyoo",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "hyeyoo",
+    "password": "hyeyoo",
+    "database": "hyeyoo",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "hyeyoo",
+    "password": "hyeyoo",
+    "database": "hyeyoo",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
