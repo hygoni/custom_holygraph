@@ -18,8 +18,12 @@
     font-family: 'Goldman', cursive;
 }
 
-a {
+#main_header a {
   text-decoration: none;
+}
+
+#main_header a:visited {
+  color: black;
 }
 
 #title {
