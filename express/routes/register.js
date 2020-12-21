@@ -22,6 +22,7 @@ router.post('/', function(req, res, next) {
         'username': username,
         'password': encrypted
       });
+      req.session.username = username;
       util.alertAndRedirect(res, 'successfully registered', '/');
     }
   });

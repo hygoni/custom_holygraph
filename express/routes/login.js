@@ -11,9 +11,10 @@ router.post('/', function(req, res, next) {
   models.user.findOne({where: {'username': username, 'password': encrypted}})
   .then(function (result) {
     if (result) {
+      req.session.username = username;
       res.redirect('/');
     } else {
-      util.alertAndRedirect(res, 'id or password is wrong', '/login.html');
+      util.alertAndRedirect(res, 'id or password is wrong', '/login');
     }
    });
 });
