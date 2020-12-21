@@ -7,24 +7,15 @@ var util = require('./util');
 router.post('/', function(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
-  console.log(req.body); 
   const encrypted = crypto.createHash("sha512").update(password).digest("hex");
-  console.log(encrypted);
-
-  const searched = models.user.findOne({where: {username}})
+  models.user.findOne({where: {'username': username, 'password': encrypted}})
   .then(function (result) {
     if (result) {
-      /* already exists */
-      util.alertAndRedirect(res, 'already exists', '/');
+      res.redirect('/');
     } else {
-      /* create new one */
-      const created = models.user.create({
-        'username': username,
-        'password': encrypted
-      });
-      util.alertAndRedirect(res, 'successfully registered', '/');
+      util.alertAndRedirect(res, 'id or password is wrong', '/login.html');
     }
-  });
+   });
 });
 
 module.exports = router;

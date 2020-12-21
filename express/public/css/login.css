@@ -1,38 +1,31 @@
-body {
-    width: 100%;
-    height: 100%;
+/*
+ * header, content, footer 구조를 정의하는 공통 css입니다.
+ */
+
+/* header part */
+
+body , html {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 #login {
-    position: absolute;
-    min-width: 500px;
-    max-width: 600px;
-    min-height: 600px;
-    max-height: 900px;
-    border: 1px solid gray;
-    border-radius: 15px;
-    
-    /* vertical, horizontal centering */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: table;
+  position: absolute;
+  margin: 10px auto;
+  border: 1px solid red;
+  border-radius: 15px;
+  min-width: 600px;
+  max-width: 600px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#inner > p {
-    margin: 10px 0;
-}
-
-#inner > form > input {
-    width: 300px;
-    height: 25px;
-    border-radius: 15px;
-}
-
-#inner {
-    font-size: 24px;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+#formBox { 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
