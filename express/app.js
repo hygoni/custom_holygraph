@@ -13,7 +13,6 @@ var serveStatic = require('serve-static');
 var logout = require('./routes/logout');
 var index = require('./routes/');
 var view = require('./routes/view');
-var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var new_ = require('./routes/new');
@@ -22,6 +21,8 @@ var subscribe = require('./routes/subscribe');
 var submit = require('./routes/submit');
 var eval = require('./routes/eval');
 
+
+/* 미들웨어들을 등록한다. */
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -33,12 +34,12 @@ app.use(expressSession({
   saveUninitialized: true
 }));
 
+/* 라우터 (컨트롤러)들을 등록한다. */
 app.use('/uploads', uploads);
 app.use('/uploads', serveStatic(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/view', view);
-app.use('/users', users);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
@@ -47,7 +48,7 @@ app.use('/subscribe', subscribe);
 app.use('/submit', submit);
 app.use('/eval', eval);
 
-// view engine setup
+// 템플릿 엔진을 EJS로 설정한다.
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
