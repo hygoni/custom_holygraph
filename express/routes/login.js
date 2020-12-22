@@ -8,6 +8,7 @@ router.post('/', function(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
   const encrypted = crypto.createHash("sha512").update(password).digest("hex");
+  /* model에서 id, pw로 user를 검색해, 일치하는지 확인 */
   models.user.findOne({where: {'username': username, 'password': encrypted}})
   .then(function (result) {
     if (result) {

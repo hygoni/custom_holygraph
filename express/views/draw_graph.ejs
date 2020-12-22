@@ -1,4 +1,13 @@
 <script>
+
+/* 이 코드는 외부 라이브러리를 참고한 것으로,
+   Google Chart를 사용했습니다.
+   참조한 자료는 구글의 공식 예제입니다.
+   https://developers.google.com/chart/interactive/docs/gallery/linechart
+   
+   draw_graph.ejs는 사용자의 학습 그래프를 그리는 view입니다.
+*/
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 

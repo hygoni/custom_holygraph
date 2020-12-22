@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 
+/*
+  view.js
+  ejs를 사용하는 모든 uri가 여기에 정의되어있습니다.
+*/
+
 router.get('/login', function(req, res, next) {
   res.render('login', {
     session: req.session
@@ -21,6 +26,7 @@ router.get('/new', function(req, res, next) {
 });
 
 router.get('/eval/:title', function(req, res, next) {
+  /* model에서 subscribe, subject를 불러온 후 템플릿 엔진 렌더링 */
   models.subscribe.findOne({where: {'username': req.session.username, 'title': req.params.title}})
   .then(function(subscribe) {
     models.subject.findOne({where: {'title': req.params.title}})
@@ -35,6 +41,7 @@ router.get('/eval/:title', function(req, res, next) {
 });
 
 router.get('/graph', function(req, res, next) {
+  /* model에서 subscribe를 불러온 후 템플릿 엔진 렌더링 */
   models.subscribe.findAll({where: {'username': req.session.username, 'status': 'success'}})
   .then(function(data) {
       res.render('graph', {

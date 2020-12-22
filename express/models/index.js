@@ -35,6 +35,7 @@ sequelize.sync().then(function() {
   console.log('model init completed');
 }).catch(function(err) {
   console.log('model init failed');
+  console.log(err);
 })
 
 db.sequelize = sequelize;

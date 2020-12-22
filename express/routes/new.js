@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var util = require('./util');
+
+/* 파일 처리 관련 미들웨어들 */
 var multer = require('multer');
 var fs = require('fs');
 var uploader = multer({
@@ -24,6 +26,7 @@ router.post('/', uploader.single('file'), function(req, res, next) {
   console.log(req.body);
   const title = req.body.title;
   const desc = req.body.desc;
+  /* uploads에 저장된 파일 이름과, 실제 파일의 이름을 DB에 저장한다. */
   const filename = req.file.originalname;
   const filepath = req.file.path;
   const exp = Number(req.body.exp);
@@ -37,6 +40,7 @@ router.post('/', uploader.single('file'), function(req, res, next) {
     json["checklist" + i] = req.body["checklist" + i];
   }
 
+  /* 새 프로젝트를 데이터베이스에 저장 */
   models.subject.create({
     'title': title,
     'desc': desc,

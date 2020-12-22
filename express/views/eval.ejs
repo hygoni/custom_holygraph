@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<!-- 레이아웃 구성 방법은 책 "모던 웹 디자인을 위한 HTML5 + CSS3입문"참고. -->
+<!--
+eval.ejs는 사용자가 평가하는 view입니다.
+-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,6 +15,7 @@
         <script src="/js/new.js"></script>
     </head>
     <body>
+        <!-- 공통 메뉴를 include -->
         <%- include("./header") %>
         <!-- content -->
         <div id="content">
@@ -44,6 +47,7 @@
                 </div>
               </div>
                
+              <!-- 컨트롤러로부터 체크리스트를 받아와서 반복문으로 모두 출력 -->
               <% const checklist = JSON.parse(subject.checklist); %>
               <% for (let i = 1; i <= Object.keys(checklist).length; i++) { %>
                 <div class="form-group row mb-2" id="copy">
@@ -57,6 +61,7 @@
                 <input type="submit" name="status" class="mx-auto btn btn-danger col-5" value="failed"> 
               </div>
             </div>
+            <!-- 컨트롤러로 필요한 정보를 다시 보낸다. -->
             <input type="hidden" name="username" value="<%= subscribe.username %>">
             <input type="hidden" name="title" value="<%= subject.title %>">
             <input type="hidden" name="score" value="<%= subject.exp %>">
