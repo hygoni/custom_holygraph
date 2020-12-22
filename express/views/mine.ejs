@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- 레이아웃 구성 방법은 책 "모던 웹 디자인을 위한 HTML5 + CSS3입문"참고. -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- web fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+        <!-- AJAX로 프로젝트 목록 불러오기 -->
+        <script src="./js/subject_list.js"></script>
+    </head>
+    <body>
+        <%- include("./header") %>
+        <!-- content -->
+        <div id="content" class="container-fluid">
+        <% for (let i = 0; i < subjects.length; i++) { %>
+          <% const subject = subjects[i].dataValues; %>
+          <a href="/view/subject/<%= subject.title %>">
+            <div class="subject row col-8 mx-auto">
+              <label class="subject-title mx-auto my-auto"><%= subject.title %>
+              
+              <% if (subject.status == 'inprogress') {  %>
+                [in progress]
+              <% } else if (subject.status == 'closed') { %>
+                [closed]
+              <% } else if (subject.status == 'success') { %>
+                [success]
+              <% } else if (subject.status == 'failed') { %>
+                [failed]
+              <% } %>
+              </label>
+            </div>
+          </a>
+        <% } %>
+
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>

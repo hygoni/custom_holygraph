@@ -27,9 +27,15 @@ router.post('/', uploader.single('file'), function(req, res, next) {
   const filename = req.file.originalname;
   const filepath = req.file.path;
   const exp = Number(req.body.exp);
+  const length = Number(req.body.length);
 
-  if (!title || !desc || !filename || !filepath || !exp)
+  if (!title || !desc || !filename || !filepath || !exp || !length)
     util.alertAndRedirect(res, 'invalid input', '/new');
+
+  let json = {};
+  for (let i = 1; i <= length; i++) {
+    json["checklist" + i] = req.body["checklist" + i];
+  }
 
   models.subject.create({
     'title': title,
@@ -37,7 +43,8 @@ router.post('/', uploader.single('file'), function(req, res, next) {
     'filename': filename,
     'filepath': filepath,
     'author': req.session.username,
-    'exp': exp
+    'exp': exp,
+    'checklist': json
   });
 
   util.alertAndRedirect(res, 'subject is successfully created', '/');

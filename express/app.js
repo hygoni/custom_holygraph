@@ -18,6 +18,9 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var new_ = require('./routes/new');
 var uploads = require('./routes/uploads');
+var subscribe = require('./routes/subscribe');
+var submit = require('./routes/submit');
+var eval = require('./routes/eval');
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -40,7 +43,9 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
 app.use('/new', new_);
-
+app.use('/subscribe', subscribe);
+app.use('/submit', submit);
+app.use('/eval', eval);
 
 // view engine setup
 app.set('view engine', 'ejs');

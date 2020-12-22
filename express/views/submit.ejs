@@ -10,24 +10,16 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="/js/new.js"></script>
     </head>
     <body>
         <%- include("./header") %>
         <!-- content -->
         <div id="content">
-          <form method="POST" enctype="multipart/form-data" action="/new">
+          <form method="POST" enctype="multipart/form-data" action="/submit">
             <div class="container-fluid mb-2">
-              <input type="hidden" id="length" name="length" value="1">
-
-              <div class="form-group row">
-                <label for="title" class="col-2 col-form-label">Title</label>
-                <input type="text" name="title" class="col-9 form-control">
-              </div>
-
-              <div class="form-group row mb-2">
-                <label for="desc" class="col-2 col-form-label">Description</label>
-                <textarea id="desc" name="desc" class="col-9 form-control"></textarea>
+              <input type="hidden" name="title" value="<%= title %>">
+              <div class="row">
+                <label for="title" class="col-2 mx-auto display-4">Submit: <%= title %></label>
               </div>
 
               <div class="form-group row mb-2">
@@ -35,20 +27,6 @@
                 <input type="file" id="file" name="file" class="col-9">
               </div>
               
-              <div class="form-group row mb-2">
-                <label for="file" class="col-2 col-form-label">Experiene</label>
-                <input type="number" min="0" value="1000" id="file" name="exp" class="col-9">
-              </div>
-              
-              <div class="form-group row mb-2" id="copy">
-                <label for="checklist" class="col-2 col-form-label">Checklist</label>
-                <input type=text" min="0" name="checklist" id="checklist" class="col-9">
-              </div>
-              
-              <div class="btn btn-primary col-2 row mx-auto" id="addButton">
-                addit!
-              </div>
-
               <div class="form-group row mb-2">
                 <input type="submit" class="mx-auto btn btn-primary col-3"> 
               </div>

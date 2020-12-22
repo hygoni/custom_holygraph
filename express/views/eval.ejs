@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 레이아웃 구성 방법은 책 "모던 웹 디자인을 위한 HTML5 + CSS3입문"참고. -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/new.css">
+        <!-- web fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="/js/new.js"></script>
+    </head>
+    <body>
+        <%- include("./header") %>
+        <!-- content -->
+        <div id="content">
+            <div class="container-fluid mb-2">
+            <form method="POST" action="/eval">
+              <div class="form-group row">
+                <label for="title" class="col-2 col-form-label">Title</label>
+                <input type="text" name="title" class="col-9 form-control" readonly value="<%= subject.title %>">
+              </div>
+
+              <div class="form-group row mb-2">
+                <label for="desc" class="col-2 col-form-label">Description</label>
+                <textarea readonly id="desc" name="desc" class="col-9 form-control"><%= subject.desc %></textarea>
+              </div>
+
+              <div class="mx-auto form-group row mb-2">
+                <div class="mx-auto col-6 btn btn-light">
+                  <a href="/<%= subject.filepath %>">
+                    Subject File
+                  </a>
+                </div>
+              </div>
+
+              <div class="mx-auto form-group row mb-2">
+                <div class="mx-auto col-6 btn btn-light">
+                  <a href="/<%= subject.filepath %>">
+                    Student's File
+                  </a>
+                </div>
+              </div>
+               
+              <% const checklist = JSON.parse(subject.checklist); %>
+              <% for (let i = 1; i <= Object.keys(checklist).length; i++) { %>
+                <div class="form-group row mb-2" id="copy">
+                  <label for="checklist" class="col-2 col-form-label">Checklist<%= i %></label>
+                  <input type="text" value="<%= checklist["checklist" + i] %>" id="checklist" class="col-6">
+                  <input type="checkbox" class="mycheckbox">
+                </div>
+              <% } %>
+              <div class="form-group row mb-2 mx-auto">
+                <input type="submit" name="status" class="mx-auto btn btn-success col-5" value="success"> 
+                <input type="submit" name="status" class="mx-auto btn btn-danger col-5" value="failed"> 
+              </div>
+            </div>
+            <input type="hidden" name="username" value="<%= subscribe.username %>">
+            <input type="hidden" name="title" value="<%= subject.title %>">
+            <input type="hidden" name="score" value="<%= subject.exp %>">
+          </form>
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>

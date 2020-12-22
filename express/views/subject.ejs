@@ -38,6 +38,23 @@
           <div class="subject row col-8 mx-auto">
             <label class="subject-desc mx-auto my-auto"><a href="/<%= subject.filepath %>">Download</a></label>
           </div>
+
+          <!-- if not subscribed, subscribe button. else, submit button -->
+          <% if (!status) { %>
+            <div class="subject row col-8 mx-auto">
+              <label class="subject-desc mx-auto my-auto"><a href="/subscribe/<%= subject.title %>">Subscribe</a></label>
+            </div>
+          <% } else { %>
+            <% if (status == 'inprogress') { %>
+            <div class="subject row col-8 mx-auto">
+              <label class="subject-desc mx-auto my-auto"><a href="/view/submit/<%= subject.title %>">Submit</a></label>
+            </div>
+            <% } else if (status == 'closed') {  %>
+              <div class="subject row col-8 mx-auto">
+                <label class="subject-desc mx-auto my-auto"><a href="/view/eval/<%= subject.title %>">Evaluation</a></label>
+              </div>
+            <% } %>
+          <% } %>
         </div>
         <footer>
         </footer>

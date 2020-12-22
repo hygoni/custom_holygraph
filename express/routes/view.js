@@ -20,21 +20,67 @@ router.get('/new', function(req, res, next) {
    });
 });
 
-router.get('/graph', function(req, res, next) {
-  res.render('graph', {
-    session: req.session
-   });
+router.get('/eval/:title', function(req, res, next) {
+  models.subscribe.findOne({where: {'username': req.session.username, 'title': req.params.title}})
+  .then(function(subscribe) {
+    models.subject.findOne({where: {'title': req.params.title}})
+    .then(function(subject) {
+      res.render('eval', {
+        session: req.session,
+        subscribe: subscribe.dataValues,
+        subject: subject.dataValues
+       }); 
+    });
+  });
 });
 
-router.get('/subject/:title', function(req, res, next) { 
+router.get('/graph', function(req, res, next) {
+  models.subscribe.findAll({where: {'username': req.session.username, 'status': 'success'}})
+  .then(function(data) {
+      res.render('graph', {
+        session: req.session,
+        data: data
+       });
+    });
+});
+
+router.get('/subject/:title', function(req, res, next) {
   models.subject.findOne({where: {'title': req.params.title}})
+  .then(function(subject) { 
+    models.subscribe.findOne({where: {'title': req.params.title, 'username': req.session.username}})
+    .then(function(subscribe) {
+      
+      let status;
+      if (!subscribe)
+        status = '';
+      else
+        status = subscribe.status;
+      
+      res.render('subject', {
+        session: req.session,
+        title: req.params.title,
+        subject: subject,
+        status: status
+       }); 
+    });
+  });
+});
+
+router.get('/mine', function(req, res, next) { 
+  models.subscribe.findAll({where: {'username': req.session.username}})
   .then(function(result) {
-    res.render('subject', {
+    res.render('mine', {
       session: req.session,
-      title: req.params.title,
-      subject: result
+      subjects: result
      });
   });
+});
+
+router.get('/submit/:title', function(req, res, next) { 
+  res.render('submit', {
+    session: req.session,
+    title: req.params.title
+   });
 });
 
 module.exports = router;

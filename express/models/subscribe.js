@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   };
   subscribe.init({
     username: DataTypes.STRING,
+    title: DataTypes.STRING,
     status: DataTypes.STRING,
+    filename: DataTypes.STRING,
+    filepath: DataTypes.STRING,
     score: DataTypes.INTEGER
   }, {
     sequelize,

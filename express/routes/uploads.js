@@ -9,10 +9,20 @@ router.get('/:file', function(req, res, next) {
   console.log(filepath);
   const subject = models.subject.findOne({where: {'filepath': filepath}})
   .then(function (result) {
-    console.log(result.filename);
-    const encoded = encodeURIComponent(result.filename);
-    res.setHeader('Content-Disposition', 'attachment; filename=' + encoded + ';');
-    next();
+    if (!result) {
+      models.subscribe.findOne({where: {'filepath': filepath}})
+      .then(function(result2) {
+        console.log(result2.filename);
+        const encoded = encodeURIComponent(result2.filename);
+        res.setHeader('Content-Disposition', 'attachment; filename=' + encoded + ';');
+        next();
+      });
+    } else {
+      console.log(result.filename);
+      const encoded = encodeURIComponent(result.filename);
+      res.setHeader('Content-Disposition', 'attachment; filename=' + encoded + ';');
+      next();
+    }
   });
 });
 
