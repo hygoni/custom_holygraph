@@ -5,27 +5,21 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/reset.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <link rel="stylesheet" type="text/css" href="/css/graph.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- web fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
-        <!-- AJAX로 프로젝트 목록 불러오기 -->
-        <script src="./js/subject_list.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="/js/graph.js"></script>
     </head>
     <body>
         <%- include("./header") %>
         <!-- content -->
-        <div id="content" class="container-fluid">
-        <% for (let i = 0; i < subjects.length; i++) { %>
-          <% const subject = subjects[i].dataValues; %>
-          <a href="/view/subject/<%= subject.title %>">
-            <div class="subject row col-8 mx-auto">
-              <label class="subject-title mx-auto my-auto"><%= subject.title %></label>
-            </div>
-          </a>
-        <% } %>
+        <div id="content">
+          <div id="graph">
 
+          </div>
         </div>
         <footer>
         </footer>

@@ -1,0 +1,28 @@
+<header id="main_header">
+    <div id="title">
+        <h1>42 Custom Holygraph</h1>
+    </div>
+    <nav id="user_info">
+        <!-- login/logout 관련버튼 -->
+        <ul>
+            <li><a>intra</a></li>
+            <% if (!session.username) { %>
+            <li><a href="/view/login">login</a></li>
+            <li><a href="/view/register">register</a></li>
+            <% } else { %>
+            <li><a href="/logout">logout</a></li>
+            <% } %>
+            <li><a>mypage</a></li>
+        </ul>
+    </nav>
+    <nav id="main_menu">
+        <!-- navigation -->
+        <ul>
+            <li><a href="/">Projects</a></li>
+            <li><a href="/mine">My Projects</a></li>
+            <li><a href="/view/ranking">Rank</a></li>
+            <li><a href="/view/graph">Learning Graph</a></li>
+            <li><a href="/view/new">Upload Your Own</a></li>
+        </ul>
+    </nav>
+</header>

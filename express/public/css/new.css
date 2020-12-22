@@ -1,0 +1,24 @@
+/*
+ * header, content, footer 구조를 정의하는 공통 css입니다.
+ */
+
+/* header part */
+
+body , html {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+form {
+  text-align: center;
+}
+
+form textarea {
+  min-height: 300px;
+  max-height: 1200px;
+}
+
+.form-group {
+  margin: 20px 0;
+}

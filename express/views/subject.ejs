@@ -17,15 +17,27 @@
         <%- include("./header") %>
         <!-- content -->
         <div id="content" class="container-fluid">
-        <% for (let i = 0; i < subjects.length; i++) { %>
-          <% const subject = subjects[i].dataValues; %>
-          <a href="/view/subject/<%= subject.title %>">
-            <div class="subject row col-8 mx-auto">
-              <label class="subject-title mx-auto my-auto"><%= subject.title %></label>
-            </div>
-          </a>
-        <% } %>
+          <div class="subject row col-8 mx-auto">
+            <label class="subject-title mx-auto my-auto">Title : <%= subject.title %></label>
+          </div>
+          
+          <div class="subject row col-8 mx-auto">
+            <label class="subject-author mx-auto my-auto">Author : <%= subject.author %></label>
+          </div>
+          
+          <div class="subject row col-8 mx-auto">
+            <label class="subject-desc mx-auto my-auto">Experience : <%= subject.exp %></label>
+          </div>
+          
+          <div class="subject row col-8 mx-auto">
+            <section readonly class=" col-12 subject-desc mx-auto my-auto">
+            <p>Description</p>
+            <%= subject.desc %></section>
+          </div>
 
+          <div class="subject row col-8 mx-auto">
+            <label class="subject-desc mx-auto my-auto"><a href="/<%= subject.filepath %>">Download</a></label>
+          </div>
         </div>
         <footer>
         </footer>

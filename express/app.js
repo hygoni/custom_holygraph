@@ -1,3 +1,4 @@
+/* modules */
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
@@ -5,15 +6,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
+var app = express();
+var serveStatic = require('serve-static');
 
+/* routers */
 var logout = require('./routes/logout');
 var index = require('./routes/');
 var view = require('./routes/view');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
-var app = express();
-
+var new_ = require('./routes/new');
+var uploads = require('./routes/uploads');
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -26,6 +30,8 @@ app.use(expressSession({
   saveUninitialized: true
 }));
 
+app.use('/uploads', uploads);
+app.use('/uploads', serveStatic(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/view', view);
@@ -33,6 +39,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
+app.use('/new', new_);
 
 
 // view engine setup

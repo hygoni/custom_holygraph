@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 레이아웃 구성 방법은 책 "모던 웹 디자인을 위한 HTML5 + CSS3입문"참고. -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/new.css">
+        <!-- web fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <%- include("./header") %>
+        <!-- content -->
+        <div id="content">
+          <form method="POST" enctype="multipart/form-data" action="/new">
+            <div class="container-fluid mb-2">
+              <div class="form-group row">
+                <label for="title" class="col-2 col-form-label">Title</label>
+                <input type="text" name="title" class="col-9 form-control">
+              </div>
+
+              <div class="form-group row mb-2">
+                <label for="desc" class="col-2 col-form-label">Description</label>
+                <textarea id="desc" name="desc" class="col-9 form-control"></textarea>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label for="file" class="col-2 col-form-label">Subject File</label>
+                <input type="file" id="file" name="file" class="col-9">
+              </div>
+              
+              <div class="form-group row mb-2">
+                <label for="file" class="col-2 col-form-label">Experience</label>
+                <input type="number" min="0" value="1000" id="file" name="exp" class="col-9">
+              </div>
+
+              <div class="form-group row mb-2">
+                <input type="submit" class="mx-auto btn btn-primary col-3"> 
+              </div>
+            </div>
+          </form>
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+.subject {
+  border: 1px solid gray;
+  border-radius: 5px;
+  min-height: 65px;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 24px;
+  /* 외부 폰트 Goldman 사용 */
+  font-family: 'Goldman', cursive;
+}
+
+.overflow-visible {
+  resize: none;
+  overflow: visible;
+}
